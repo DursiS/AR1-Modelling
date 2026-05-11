@@ -1,10 +1,3 @@
-# Create a random walk (additive)
-# Simulate many steps
-# Var(Xt) is the expected variance so far, track day
-# Cov(Xt+1, Xt) is the expected difference in mutliplied expected values to date
-
-import random
-import matplotlib.pyplot as plt
 import numpy as np
 from statsmodels.tsa.stattools import adfuller
 
@@ -40,35 +33,6 @@ class RandomWalk:
         """Move <n> consecutive steps forward."""
         for i in range(n):
             self.step()
-
-
-# class Stats:
-#     """Statistical measure for a randomwalk."""
-#
-#     def expected(self, rw: RandomWalk, time: int) -> float:
-#         """Return the expected height of self at <time>.
-#
-#         Precondition: time > 0
-#         """
-#         total = 0
-#         for i in range(50):
-#             rw = RandomWalk(rw.constant)
-#             rw.run(time)
-#             total += rw.path[-1][1]
-#         return total / 50
-#
-#     def var(self, rw: RandomWalk, time: int) -> float:
-#         """Return the variance of this random walk"""
-#         total = 0
-#         for i in range(50):
-#             rw = RandomWalk(rw.constant)
-#             rw.run(time)
-#             total += rw.path[-1][1] ** 2
-#         return (total / 50) - Stats.expected(rw, time)
-#
-#     def std(self, rw: RandomWalk, time: int) -> float:
-#         """Return the standard deviation of this random walk"""
-#         return self.var(rw, time) ** (1 / 2)
 
 
 def get_squared_diff(rw1: RandomWalk, rw2: RandomWalk, beta: float) -> float:
